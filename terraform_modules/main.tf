@@ -22,12 +22,14 @@ module "aks" {
   location            = var.location
   subnet_id           = module.networking.subnet_id
   acr_name            = module.acr.name
+  tags     = var.tags
 }
 
 module "apim" {
   source              = "./modules/apim"
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
+  tags     = var.tags
 }
 
 module "appgateway" {
@@ -35,4 +37,5 @@ module "appgateway" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
   subnet_id           = module.networking.subnet_id
+  tags     = var.tags
 }
